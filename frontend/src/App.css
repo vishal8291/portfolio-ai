@@ -1,0 +1,222 @@
+/* 1. GLOBAL RESET - Removes browser defaults that cause glitches */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  overflow-x: hidden;
+  background: #020617; /* Deepest space background */
+  font-family: 'Inter', sans-serif;
+}
+
+/* 2. BASE CONSTRAINTS & BACKGROUND ORBS */
+.app-wrapper {
+  color: #f1f5f9;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  background: #020617;
+}
+
+.orb {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: 0;
+  opacity: 0.15;
+  pointer-events: none;
+  animation: move 20s infinite alternate;
+}
+.orb-1 { background: #6366f1; top: -100px; left: -100px; }
+.orb-2 { background: #a855f7; bottom: -100px; right: -100px; animation-delay: -5s; }
+
+@keyframes move {
+  from { transform: translate(0, 0); }
+  to { transform: translate(100px, 100px); }
+}
+
+/* 3. ADVANCED FLOATING NAVBAR - Fixed overlap and dots */
+.navbar {
+  position: sticky;
+  top: 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  max-width: 900px;
+  width: 95%;
+  margin: 0 auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  gap: 20px;
+}
+
+.nav-links {
+  list-style: none; /* FIXES DOTS */
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  text-decoration: none; /* FIXES UNDERLINES */
+  color: #94a3b8;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.nav-links a:hover { color: #818cf8; }
+
+/* 4. TIGHTENED MAIN LAYOUT - Fixed the "Too Far" gap */
+.main-layout {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1050px; /* Brought closer together */
+  margin: 0 auto;
+  gap: 30px;        /* Tightened gap between sidebar and content */
+  padding: 40px 20px;
+}
+
+.sticky-sidebar {
+  flex: 0.7;        /* Balanced width */
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.scroll-content {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;        /* Tightened gap between projects and chat */
+}
+
+/* 5. COMPONENTS & TEXT */
+.gradient-text {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 800;
+  background: linear-gradient(to right, #818cf8, #c084fc, #fb7185);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(129, 140, 248, 0.3));
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 25px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+.status-indicator {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #818cf8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .main-layout { flex-direction: column; }
+  .sticky-sidebar { position: relative; top: 0; }
+  .navbar { padding: 10px 20px; }
+  .nav-links { display: none; } /* Mobile cleanup */
+}
+
+
+/* Styling the Hire Me Button */
+.contact-btn {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+/* Styling the AI Chat Message Box */
+.chat-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  color: white;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.chat-input:focus {
+  border-color: #818cf8;
+}
+
+/* Styling the Chat Submit Button */
+.chat-submit-btn {
+  background: #818cf8;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.hero-viewport {
+  /* Add this line - adjust 120px based on your navbar height */
+  padding-top: 120px; 
+  
+  min-height: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
