@@ -9,7 +9,7 @@ export const Contact = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('"F:\portfolio-ai\backend\cloudflared-windows-amd64.exe" tunnel --url http://localhost:8000', formData);
+      const response = await axios.post('https://makes-grab-biology-relative.trycloudflare.com/contact', formData);
       
       if (response.data.status === "success") {
         alert("Message received! Check MongoDB Compass.");
