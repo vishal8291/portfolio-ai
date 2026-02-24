@@ -15,7 +15,7 @@ const ChatWidget = () => {
 
     try {
       
-      const response = await axios.post('https://impact-routine-sprint-cigarettes.trycloudflare.com/chat', { message: input });
+      const response = await axios.post('https://manufacturer-vocabulary-telecommunications-america.trycloudflare.com/chat', { message: input });
       setMessages((prev) => [...prev, { role: 'ai', text: response.data.response }]);
     } catch (error) {
       setMessages((prev) => [...prev, { role: 'ai', text: "Error connecting to my brain. Is the backend running?" }]);

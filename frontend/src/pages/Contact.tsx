@@ -9,7 +9,7 @@ export const Contact = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('https://impact-routine-sprint-cigarettes.trycloudflare.com/contact', formData);
+      const response = await axios.post('https://manufacturer-vocabulary-telecommunications-america.trycloudflare.com/contact', formData);
       
       if (response.data.status === "success") {
         alert("Message received! Check MongoDB Compass.");
