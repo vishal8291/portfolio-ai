@@ -15,7 +15,7 @@ const ChatWidget = () => {
 
     try {
       
-      const response = await axios.post('"F:\portfolio-ai\backend\cloudflared-windows-amd64.exe" tunnel --url http://localhost:8000', { message: input });
+      const response = await axios.post('https://makes-grab-biology-relative.trycloudflare.com', { message: input });
       setMessages((prev) => [...prev, { role: 'ai', text: response.data.response }]);
     } catch (error) {
       setMessages((prev) => [...prev, { role: 'ai', text: "Error connecting to my brain. Is the backend running?" }]);
